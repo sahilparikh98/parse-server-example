@@ -19,12 +19,11 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-  }
+  },
   push: {
     ios: {
-      pfx: BetPushDevelopmentCertificate.p12
-      passphrase: 1
-      bundleId: com.sahilparikh.bet
+      pfx: "Certificates.p12",
+      bundleId: "com.sahilparikh.bet",
       production: false
     }
   }
