@@ -1,10 +1,10 @@
 Parse.Cloud.afterSave("Bet", function(request) {
   if(!request.object.get("accepted") && !request.object.get("rejected"))
   {
-    var query = new Parse.Query(Parse.User)
-    query.equalTo("objectId", request.object.get("receivingUser").id)
-    var pushQuery = new Parse.Query(Parse.Installation)
-    pushQuery.matchesQuery('user', query)
+    var query = new Parse.Query(Parse.User);
+    query.equalTo("objectId", request.object.get("receivingUser").id);
+    var pushQuery = new Parse.Query(Parse.Installation);
+    pushQuery.matchesQuery('user', query);
     Parse.Push.send({
       where: pushQuery,
       data: {
