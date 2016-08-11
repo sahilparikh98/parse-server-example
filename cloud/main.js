@@ -6,7 +6,7 @@ Parse.Cloud.afterSave("Bet", function(request) {
 
    Parse.Push.send({
      where: query,
-     data: { alert: "New bet request from " + request.object.get("creatingUser").get("username") + "!", badge: "Increment"
+     data: { alert: "New bet request from " + request.object.get("creatingUser").getUsername() + "!", badge: "Increment"
            }
    }, { useMasterKey: true })
    .then(function() {
