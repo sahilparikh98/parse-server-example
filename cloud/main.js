@@ -60,6 +60,27 @@ Parse.Cloud.afterSave("FriendRequest", function(request) {
  }
 });
 
+Parse.Cloud.afterSave("FriendRequest", function(request) {
+ if(request.object.get("accepted") && !request.object.get("rejected"))
+ {
+   query = new Parse.Query(Parse.Installation);
+   query.equalTo("user", request.object.get("creatingUser"));
+   Parse.Cloud.useMasterKey()
+   Parse.Push.send({
+     where: query,
+     data: { alert: "" + request.object.get("receiverName") + " has accepted your friend request!!", badge: "Increment"
+           }
+   }, { useMasterKey: true })
+   .then(function() {
+     // Push sent!
+     console.log(request.params);
+     response.success();
+   }, function(error) {
+     // There was a problem :(
+   });
+ }
+});
+
 Parse.Cloud.afterSave("Result", function(request) {
  if(!request.object.get("accepted") && !request.object.get("rejected"))
  {
