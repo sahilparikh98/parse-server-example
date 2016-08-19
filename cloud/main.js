@@ -19,7 +19,7 @@ Parse.Cloud.afterSave("Bet", function(request) {
  }
 });
 Parse.Cloud.afterSave("Bet", function(request) {
- if(request.object.get("accepted") && !request.object.get("rejected") && !request.object.get("finished"))
+ if(!request.object.get("accepted") && !request.object.get("rejected") && !request.object.get("finished"))
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("creatingUser"));
