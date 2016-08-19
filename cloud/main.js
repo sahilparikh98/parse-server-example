@@ -19,9 +19,6 @@ Parse.Cloud.afterSave("Bet", function(request) {
      // There was a problem :(
    });
  }
-});
-
-Parse.Cloud.afterSave("Bet", function(request) {
  if(request.object.get("accepted") && !request.object.get("rejected") && !request.object.get("finished"))
  {
    query = new Parse.Query(Parse.Installation);
@@ -41,6 +38,7 @@ Parse.Cloud.afterSave("Bet", function(request) {
    });
  }
 });
+
 
 Parse.Cloud.afterSave("FriendRequest", function(request) {
  if(!request.object.get("accepted") && !request.object.get("rejected"))
