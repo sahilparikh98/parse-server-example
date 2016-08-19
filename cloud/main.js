@@ -3,7 +3,7 @@ Parse.Cloud.afterSave("Bet", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("receivingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "New bet request from " + request.object.get("senderName") + "!", badge: "Increment"
@@ -23,7 +23,7 @@ Parse.Cloud.afterSave("Bet", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("creatingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "" + request.object.get("receiverName") + " has accepted your bet!", badge: "Increment"
@@ -44,7 +44,7 @@ Parse.Cloud.afterSave("FriendRequest", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("receivingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "New friend request from " + request.object.get("senderName") + "!", badge: "Increment"
@@ -65,7 +65,7 @@ Parse.Cloud.afterSave("FriendRequest", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("creatingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "" + request.object.get("receiverName") + " has accepted your friend request!!", badge: "Increment"
@@ -86,7 +86,7 @@ Parse.Cloud.afterSave("Result", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("receivingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "New result request from " + request.object.get("senderName") + "!", badge: "Increment"
@@ -107,7 +107,7 @@ Parse.Cloud.afterSave("Result", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("creatingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "" + request.object.get("receiverName") + " has accepted your result!", badge: "Increment"
@@ -128,7 +128,7 @@ Parse.Cloud.afterSave("Result", function(request) {
  {
    query = new Parse.Query(Parse.Installation);
    query.equalTo("user", request.object.get("receivingUser"));
-   Parse.Cloud.useMasterKey()
+   Parse.Cloud.useMasterKey();
    Parse.Push.send({
      where: query,
      data: { alert: "" + request.object.get("receiverName") + " has rejected your result!", badge: "Increment"
