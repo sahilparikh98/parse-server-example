@@ -59,9 +59,6 @@ Parse.Cloud.afterSave("FriendRequest", function(request) {
      // There was a problem :(
    });
  }
-});
-
-Parse.Cloud.afterSave("FriendRequest", function(request) {
  if(request.object.get("accepted") && !request.object.get("rejected"))
  {
    query = new Parse.Query(Parse.Installation);
@@ -101,9 +98,6 @@ Parse.Cloud.afterSave("Result", function(request) {
      // There was a problem :(
    });
  }
-});
-
-Parse.Cloud.afterSave("Result", function(request) {
  if(request.object.get("accepted") && !request.object.get("rejected"))
  {
    query = new Parse.Query(Parse.Installation);
@@ -122,9 +116,6 @@ Parse.Cloud.afterSave("Result", function(request) {
      // There was a problem :(
    });
  }
-});
-
-Parse.Cloud.afterSave("Result", function(request) {
  if(!request.object.get("accepted") && request.object.get("rejected"))
  {
    query = new Parse.Query(Parse.Installation);
@@ -144,3 +135,4 @@ Parse.Cloud.afterSave("Result", function(request) {
    });
  }
 });
+
